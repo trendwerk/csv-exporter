@@ -1,2 +1,2 @@
-# csv-exporter
-Starter plugin for creating a CSV export tool
+# CSV Exporter
+Starter plugin for creating a CSV export tool.
