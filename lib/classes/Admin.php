@@ -9,28 +9,28 @@ final class Admin
 {
     public function __construct()
     {
-        add_action('admin_menu', array($this, 'menu'));
+        add_action('admin_menu', array($this, 'menuPages'));
     }
 
     /**
-     * Register menu pages
+     * Add admin menu page "Export"
      */
-    public function menu()
+    public function menuPages()
     {
         add_menu_page(
             __('Export', 'tp-csv-exporter'),
             __('Export', 'tp-csv-exporter'),
             'publish_posts',
             'tp-csv-exporter',
-            array($this, 'exportPage'),
+            array($this, 'pageContent'),
             'dashicons-download'
         );
     }
 
     /**
-     * Export menu page
+     * Add content to admin menu page "Export"
      */
-    public function exportPage()
+    public function pageContent()
     {
     ?>
 
@@ -38,6 +38,15 @@ final class Admin
         <h1>
             <?php _e('Export posts to .csv', 'tp-csv-exporter'); ?>
         </h1>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <?php
+                wp_nonce_field('tp-csv-exporter');
+                submit_button(__('Export posts', 'tp-csv-exporter'));
+            ?>
+
+    	</form>
     </div>
 
     <?php
