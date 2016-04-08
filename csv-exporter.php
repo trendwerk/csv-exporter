@@ -11,12 +11,7 @@
  * Version: 0.1.0
  */
 
-/**
- * Autoload classes
- */
 include_once('lib/autoload.php');
 
-/**
- * Initialize
- */
-include_once('lib/init.php');
+new Trendwerk\CSVExporter\Admin();
+new Trendwerk\CSVExporter\Localisation();
