@@ -14,4 +14,5 @@
 include_once('lib/autoload.php');
 
 new Trendwerk\CSVExporter\Admin();
+new Trendwerk\CSVExporter\Export();
 new Trendwerk\CSVExporter\Localisation();

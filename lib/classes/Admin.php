@@ -39,14 +39,10 @@ final class Admin
             <?php _e('Export posts to .csv', 'tp-csv-exporter'); ?>
         </h1>
 
-        <form method="POST" enctype="multipart/form-data">
-
-            <?php
-                wp_nonce_field('tp-csv-exporter');
-                submit_button(__('Export posts', 'tp-csv-exporter'));
-            ?>
-
-    	</form>
+        <form action="<?php echo admin_url('admin-post.php'); ?>">
+            <input type="hidden" name="action" value="export_csv">
+            <?php submit_button(__('Export posts', 'tp-csv-exporter')); ?>
+        </form>
     </div>
 
     <?php
