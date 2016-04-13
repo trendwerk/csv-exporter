@@ -11,8 +11,10 @@
  * Version: 0.1.0
  */
 
+namespace Trendwerk\CsvExporter;
+
 include_once('lib/autoload.php');
 
-new Trendwerk\CSVExporter\Admin();
-new Trendwerk\CSVExporter\Export();
-new Trendwerk\CSVExporter\Localisation();
+new Admin();
+new Export();
+new Plugin();

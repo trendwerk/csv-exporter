@@ -1,9 +1,5 @@
 <?php
-/**
- * Autoload classes
- */
-
-namespace Trendwerk\CSVExporter;
+namespace Trendwerk\CsvExporter;
 
 spl_autoload_register(function ($class) {
     $length = strlen(__NAMESPACE__);

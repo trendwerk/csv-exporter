@@ -1,9 +1,5 @@
 <?php
-/**
- * CSV Exporter
- */
-
-namespace Trendwerk\CSVExporter;
+namespace Trendwerk\CsvExporter;
 
 final class Export
 {
@@ -17,6 +13,10 @@ final class Export
      */
     public function export()
     {
+        if (! check_admin_referer('csv-exporter')) {
+            return;
+        }
+
         /**
          * Get required data
          */
@@ -48,5 +48,6 @@ final class Export
             fputcsv($file, $row);
         }
 
+        fclose($file);
     }
 }

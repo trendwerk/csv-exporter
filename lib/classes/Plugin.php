@@ -1,24 +1,20 @@
 <?php
-/**
- * Menu's
- */
+namespace Trendwerk\CsvExporter;
 
-namespace Trendwerk\CSVExporter;
-
-final class Localisation
+final class Plugin
 {
     public function __construct()
     {
-        add_action('plugins_loaded', array($this, 'localization'));
+        add_action('plugins_loaded', array($this, 'localize'));
     }
 
     /**
      * Localisation
      */
-    public function localization()
+    public function localize()
     {
         load_muplugin_textdomain(
-            'tp-csv-exporter',
+            'csv-exporter',
             dirname(dirname(dirname(plugin_basename(__FILE__)))) . '/assets/languages/'
         );
     }

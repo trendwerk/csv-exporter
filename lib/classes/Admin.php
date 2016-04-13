@@ -1,47 +1,46 @@
 <?php
-/**
- * Menu's
- */
-
-namespace Trendwerk\CSVExporter;
+namespace Trendwerk\CsvExporter;
 
 final class Admin
 {
     public function __construct()
     {
-        add_action('admin_menu', array($this, 'menuPages'));
+        add_action('admin_menu', array($this, 'addMenuPage'));
     }
 
     /**
      * Add admin menu page "Export"
      */
-    public function menuPages()
+    public function addMenuPage()
     {
         add_menu_page(
-            __('Export', 'tp-csv-exporter'),
-            __('Export', 'tp-csv-exporter'),
+            __('Export', 'csv-exporter'),
+            __('Export', 'csv-exporter'),
             'publish_posts',
-            'tp-csv-exporter',
-            array($this, 'pageContent'),
-            'dashicons-download'
+            'csv-exporter',
+            array($this, 'displayPage'),
+            'dashicons-upload'
         );
     }
 
     /**
      * Add content to admin menu page "Export"
      */
-    public function pageContent()
+    public function displayPage()
     {
     ?>
 
-    <div class="wrap tp-csv-exporter">
+    <div class="wrap">
         <h1>
-            <?php _e('Export posts to .csv', 'tp-csv-exporter'); ?>
+            <?php _e('Export posts to .csv', 'csv-exporter'); ?>
         </h1>
 
         <form action="<?php echo admin_url('admin-post.php'); ?>">
             <input type="hidden" name="action" value="export_csv">
-            <?php submit_button(__('Export posts', 'tp-csv-exporter')); ?>
+            <?php
+                wp_nonce_field('csv-exporter');
+                submit_button(__('Export posts', 'csv-exporter'));
+            ?>
         </form>
     </div>
 
